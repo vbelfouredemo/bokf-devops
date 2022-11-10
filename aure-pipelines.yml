@@ -6,7 +6,7 @@ parameters:
 - name: host
   displayName: API Manager Hostname
   type: string
-  default: onprem-td.demo.axway.com
+  default: maverick.demo.axway.com
 - name: username
   displayName: API Manager Username
   type: string
