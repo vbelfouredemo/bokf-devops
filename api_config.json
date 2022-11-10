@@ -5,8 +5,6 @@
 	"version": "1.0.1",
 	"organization": "API Development",
   "customProperties": {
-    "securityLevel": "public",
-    "publicAPI": true
   },
   "outboundProfiles": {
 		"_default": {
