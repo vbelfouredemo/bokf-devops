@@ -45,7 +45,7 @@
 		      ]
      	}
      ],
-	"apiDefinition": "store.json",
+	"apiDefinition": "mavStore.json",
 	"image": "Market.png",
 	"vhost": "maverick.demo.axway.com:8065",
 	"tags": {
