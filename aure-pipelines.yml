@@ -1,0 +1,50 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+parameters:
+- name: host
+  displayName: API Manager Hostname
+  type: string
+  default: onprem-td.demo.axway.com
+- name: username
+  displayName: API Manager Username
+  type: string
+  default: apiadmin
+#- name: password
+#  displayName: API Manager Password
+#  type: string
+#  default: Space*BHF*117
+- name: returnCodeMapping
+  displayName: CLI Return code mapping
+  type: string
+  default: 10:0
+  
+pool:
+  vmImage: 'ubuntu-latest'
+    
+trigger:
+- master
+
+jobs:
+- job: deploy
+  displayName: Deploy API to Amplify Central and Test 
+  steps:
+  - task: Maven@3
+    inputs:
+      mavenPomFile: 'pom.xml'
+      mavenOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.8'
+      jdkArchitectureOption: 'x64'
+      publishJUnitResults: true
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      goals: 'clean exec:java'
+      options: '-Dexec.args="-h ${{ parameters.host }} -u ${{ parameters.username }} -p $(password) -c api_config.json -s api-env -f true -returnCodeMapping ${{ parameters.returnCodeMapping }}"'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '12.x'
+  - script: npm install -g newman
+    displayName: Install Postman- newman
+#  - script: newman run bhf.postman_collection.json --insecure
+#    displayName: Run Tests
