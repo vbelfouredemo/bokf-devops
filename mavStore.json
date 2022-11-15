@@ -143,7 +143,7 @@
           "pet"
         ],
         "summary": "Finds Pets by status",
-        "description": "Multiple status values can be provided with comma separated strings",
+        "description": "Multiple status values can be provided with comma separated strings 2",
         "operationId": "findPetsByStatus",
         "produces": [
           "application/xml",
