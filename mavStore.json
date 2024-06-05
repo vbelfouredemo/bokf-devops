@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "This is a axway Store.  You can find out more about this at axway.com.",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "title": "Store",
     "termsOfService": "http://swagger.io/terms/",
     "contact": {
